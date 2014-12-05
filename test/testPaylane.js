@@ -17,7 +17,32 @@ describe( 'module' , function() {
 		paylane.cards.should.have.property( 'saleByToken' )
 		done()
 	})
+	it( 'Should have function authorizationByToken ' , function( done ){
+		paylane.cards.should.have.property( 'authorizationByToken' )
+		done()
+	})
+
+	it( 'Should have function authorization ' , function( done ){
+		paylane.cards.should.have.property( 'authorization' )
+		done()
+	})	
+
+	it( 'Should have function generateToken ' , function( done ){
+		paylane.cards.should.have.property( 'generateToken' )
+		done()
+	})
+
+	it( 'Should have function check ' , function( done ){
+		paylane.cards.should.have.property( 'check' )
+		done()
+	})
+
+
+	it( 'Should have function checkByToken ' , function( done ){
+		paylane.cards.should.have.property( 'checkByToken' )
+		done()
+	})
 })
 
-					
+
 
