@@ -50,12 +50,9 @@ Object.keys(routes).forEach( function( key , i , a){
 
 		
 		routeExport[key][childKey] = function( paylaneParameters , callback ){
-			var route = util.format("cards/%s" , childKey )
+			var route = util.format("%s/%s" , key ,childKey )
 			var options = {
-				url : util.format(PAYLANE_URL,
-													username,
-													password,
-													route),
+				url : util.format(PAYLANE_URL, username , password , route ),
 				method : 'post',
 				json : true,
 				body : paylaneParameters			
