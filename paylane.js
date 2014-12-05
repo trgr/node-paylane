@@ -17,18 +17,7 @@ function send( options , callback ){
 	})	
 }
 
-var cards  = {}
-var paypal = {}
-var sofort = {}
-var sales  = {}
 
-var resales  = {}
-var threeDsecure = {}
-var banktransfers  = {}
-var directdebits   = {}
-var authorizations = {}
-var routes = []
-var export_routes = []
 var resources = {
 	cards : [
 	"saleByToken",
