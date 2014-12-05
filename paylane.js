@@ -1,8 +1,10 @@
 var util = require( 'util' )
-var request = require( 'request' )
 
+var request = require( 'request' )
 var helpers = require( './helpers' )
+
 var resources = []
+
 resources["cards"] = [
 	"saleByToken",
 	"authorizationByToken",
