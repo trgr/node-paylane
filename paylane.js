@@ -19,13 +19,18 @@ function send( options , callback ){
 
 
 var resources = {
-	cards : [
+	"cards" : [
 	"saleByToken",
 	"authorizationByToken",
 	"authorization",
 	"generateToken",
 	"check",
 	"checkByToken"
+	],
+	"paypal" : [
+		"sale",
+		"authorization",
+		"stopRecurring"
 	]
 }
 
