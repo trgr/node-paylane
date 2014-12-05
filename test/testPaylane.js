@@ -2,8 +2,8 @@ var should = require( 'should' )
 var assert = require( 'assert' )
 
 var paylane = require( '../paylane' )
-console.log( paylane )
-describe( 'module' , function() {
+console.log( paylane.paypal )
+describe( 'cards' , function() {
 	it( 'Should have function setCredentials' , function( done ){
 		paylane.should.have.property('setCredentials')
 		done()
@@ -40,6 +40,21 @@ describe( 'module' , function() {
 
 	it( 'Should have function checkByToken ' , function( done ){
 		paylane.cards.should.have.property( 'checkByToken' )
+		done()
+	})
+})
+describe( 'paypal' , function() {
+	it( 'Should have function sale ' , function( done ){
+		paylane.paypal.should.have.property( 'sale' )
+		done()
+	})
+
+	it( 'Should have function authorization ' , function( done ){
+		paylane.paypal.should.have.property( 'authorization' )
+		done()
+	})
+	it( 'Should have function stopRecurring ' , function( done ){
+		paylane.paypal.should.have.property( 'stopRecurring' )
 		done()
 	})
 })
