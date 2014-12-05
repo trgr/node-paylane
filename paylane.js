@@ -6,9 +6,22 @@ var PAYLANE_URL = "https://%s:%s@direct.paylane.com/rest/%s"
 var username = null
 var password = null
 
-var setCredentials = function( user , pass){
+function setCredentials( user , pass){
 	username = user
 	password = pass
+}
+
+function createRoute( pathArray ){
+	return function( paylaneParameters , callback ){
+		var route = pathArray.join("/")
+		var options = {
+			url : util.format(PAYLANE_URL, username , password , route ),
+			method : 'post',
+			json : true,
+			body : paylaneParameters			
+		}
+			send( options , callback )
+	}
 }
 
 function send( options , callback ){
@@ -41,19 +54,6 @@ resources["sofort"] = [
 ]
 resources["refunds"] = ""
 					
-function createRoute( pathArray ){
-	return function( paylaneParameters , callback ){
-		var route = pathArray.join("/")
-		var options = {
-			url : util.format(PAYLANE_URL, username , password , route ),
-			method : 'post',
-			json : true,
-			body : paylaneParameters			
-		}
-			send( options , callback )
-	}
-}
-
 var routes = []
 
 Object.keys(resources).forEach( function( key , i , a){
