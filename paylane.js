@@ -2,11 +2,6 @@ var util = require( 'util' )
 var request = require( 'request' )
 
 var helpers = require( './helpers' )
-var PAYLANE_URL = "https://%s:%s@direct.paylane.com/rest/%s"
-
-var username = null
-var password = null
-
 var resources = []
 resources["cards"] = [
 	"saleByToken",

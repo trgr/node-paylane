@@ -1,3 +1,8 @@
+var PAYLANE_URL = "https://%s:%s@direct.paylane.com/rest/%s"
+
+var username = null
+var password = null
+
 function send( options , callback ){
 	request( options, function( err , response, body ){
 		callback( err , body )
