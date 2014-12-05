@@ -1,12 +1,13 @@
-var PaylaneClient = require( '../paylane.js' )
+var paylane = require( '../paylane.js' )
 
 var username = process.argv[2]
 var password = process.argv[3]
 var token    = process.argv[4]
 
-var client = new PaylaneClient( username , password )
 
-client.cardSaleByToken( {
+paylane.setCredentials( username , password )
+console.log( paylane )
+paylane.cards.saleByToken( {
 	sale : {
 		amount : 10,
 		currency : "EUR",
