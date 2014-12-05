@@ -29,39 +29,46 @@ var directdebits   = {}
 var authorizations = {}
 var routes = []
 var export_routes = []
-
-routes['cards'] = [
+var routes = {
+	cards : [
 	"saleByToken",
 	"authorizationByToken",
 	"authorization",
 	"generateToken",
 	"check",
 	"checkByToken"
-]
+	]
+}
+	
 
-var export_obj  = {}
 
-export_obj.cards = routes['cards'].reduce(function(o, x, i) {
-	o[x] = function( paylaneParameters , callback ){
+var routeExport = []
+Object.keys(routes).forEach( function( key , i , a){
+	routes[a[i]].forEach( function(childKey , childIndex , childArray ){
+		if( routeExport[key] == undefined )
+			routeExport[key] = new Array()
+
 		
-		var route = util.format("cards/%s" , x )
-		var options = {
-			url : util.format(PAYLANE_URL,
-												username,
-												password,
-												route),
-			method : 'post',
-			json : true,
-			body : paylaneParameters			
+		routeExport[key][childKey] = function( paylaneParameters , callback ){
+			var route = util.format("cards/%s" , childKey )
+			var options = {
+				url : util.format(PAYLANE_URL,
+													username,
+													password,
+														route),
+				method : 'post',
+				json : true,
+				body : paylaneParameters			
+			}
+			send( options , callback )
 		}
-		send( options , callback )
-	};
-	return o;
-}, {});
+	})
+})
 
-export_obj.setCredentials = function( user , pass ){
+
+routeExport.setCredentials = function( user , pass ){
 	username = user
 	password = pass
 }
 
-module.exports = export_obj
+module.exports = routeExport
