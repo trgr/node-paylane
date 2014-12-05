@@ -29,7 +29,7 @@ var directdebits   = {}
 var authorizations = {}
 var routes = []
 var export_routes = []
-var routes = {
+var resources = {
 	cards : [
 	"saleByToken",
 	"authorizationByToken",
@@ -39,17 +39,15 @@ var routes = {
 	"checkByToken"
 	]
 }
-	
 
+var routes = []
 
-var routeExport = []
-Object.keys(routes).forEach( function( key , i , a){
-	routes[a[i]].forEach( function(childKey , childIndex , childArray ){
-		if( routeExport[key] == undefined )
-			routeExport[key] = new Array()
-
+Object.keys(resources).forEach( function( key , i , a){
+	resources[a[i]].forEach( function(childKey , childIndex , childArray ){
+		if( routes[key] == undefined )
+			routes[key] = new Array()
 		
-		routeExport[key][childKey] = function( paylaneParameters , callback ){
+		routes[key][childKey] = function( paylaneParameters , callback ){
 			var route = util.format("%s/%s" , key ,childKey )
 			var options = {
 				url : util.format(PAYLANE_URL, username , password , route ),
@@ -63,9 +61,6 @@ Object.keys(routes).forEach( function( key , i , a){
 })
 
 
-routeExport.setCredentials = function( user , pass ){
-	username = user
-	password = pass
-}
+routes.setCredentials = setCredentials
 
-module.exports = routeExport
+module.exports = routes
