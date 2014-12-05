@@ -27,95 +27,41 @@ var threeDsecure = {}
 var banktransfers  = {}
 var directdebits   = {}
 var authorizations = {}
+var routes = []
+var export_routes = []
 
-cards.saleByToken =  function( paylaneParameters , callback ){
-	var route = "cards/saleByToken"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
+routes['cards'] = [
+	"saleByToken",
+	"authorizationByToken",
+	"authorization",
+	"generateToken",
+	"check",
+	"checkByToken"
+]
+
+var export_obj  = {}
+
+export_obj.cards = routes['cards'].reduce(function(o, x, i) {
+	o[x] = function( paylaneParameters , callback ){
+		
+		var route = util.format("cards/%s" , x )
+		var options = {
+			url : util.format(PAYLANE_URL,
+												username,
+												password,
+												route),
+			method : 'post',
+			json : true,
+			body : paylaneParameters			
+		}
+		send( options , callback )
+	};
+	return o;
+}, {});
+
+export_obj.setCredentials = function( user , pass ){
+	username = user
+	password = pass
 }
 
-
-cards.authorizationByToken =  function( paylaneParameters , callback ){
-	var route = "cards/authorizationByToken"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
-}
-
-cards.authorization =  function( paylaneParameters , callback ){
-	var route = "cards/authorization"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
-}
-
-cards.generateToken =  function( paylaneParameters , callback ){
-	var route = "cards/generateToken"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
-}
-
-cards.check =  function( paylaneParameters , callback ){
-	var route = "cards/check"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
-}
-
-
-cards.checkByToken =  function( paylaneParameters , callback ){
-	var route = "cards/checkByToken"
-	var options = {
-		url : util.format(PAYLANE_URL,
-											username,
-											password,
-											route),
-		method : 'post',
-		json : true,
-		body : paylaneParameters			
-	}
-	send( options , callback )
-}
-
-
-module.exports = {
-	setCredentials : setCredentials,
-	cards : cards
-}
+module.exports = export_obj

@@ -4,9 +4,9 @@ var username = process.argv[2]
 var password = process.argv[3]
 var token    = process.argv[4]
 
-
-paylane.setCredentials( username , password )
 console.log( paylane )
+paylane.setCredentials( username , password )
+
 paylane.cards.saleByToken( {
 	sale : {
 		amount : 10,
