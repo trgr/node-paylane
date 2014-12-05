@@ -1,6 +1,6 @@
 {
   "name": "node-paylane",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Paylane REST client for node.js",
   "main": "paylane.js",
   "scripts": {
