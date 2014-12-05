@@ -2,7 +2,7 @@ var should = require( 'should' )
 var assert = require( 'assert' )
 
 var paylane = require( '../paylane' )
-console.log( paylane )
+
 describe( 'cards' , function() {
 	it( 'Should have function setCredentials' , function( done ){
 		paylane.should.have.property('setCredentials')
