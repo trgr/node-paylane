@@ -22,25 +22,8 @@ function createRoute( pathArray ){
 	}
 }
 
-function transformResourceListToRoute( rec ){
-	var routes = []
 
-	Object.keys(rec).forEach( function( key , i , a){
-		if( typeof( rec[a[i]] ) != "object" ){
-			routes[key] = createRoute( [ key ]  )
-		}else{
-			rec[a[i]].forEach( function(childKey , childIndex , childArray ){
-				if( routes[key] == undefined )
-					routes[key] = new Array()
-				
-				routes[key][childKey] = createRoute( [key , childKey] )
-			})
-		}
-	})
-	return routes
-}
 
 module.exports = {
-	createRoute : createRoute,
-	transformResourceListToRoute : transformResourceListToRoute
+	createRoute : createRoute
 }
