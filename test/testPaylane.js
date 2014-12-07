@@ -86,5 +86,49 @@ describe( 'refunds' , function() {
 	})
 })
 
+describe( 'authorizations' , function() {
+	it( 'Should have function capture ' , function( done ){
+		paylane.authorizations.should.have.property( 'capture' )
+		done()
+	})
+
+	it( 'Should have function close ' , function( done ){
+		paylane.authorizations.should.have.property( 'close' )
+		done()
+	})
+})
+
+
+
+describe( 'resales' , function() {
+	it( 'Should have function sale ' , function( done ){
+		paylane.resales.should.have.property( 'sale' )
+		done()
+	})
+
+	it( 'Should have function authorization ' , function( done ){
+		paylane.resales.should.have.property( 'authorization' )
+		done()
+	})
+})
+
+
+describe( 'threedsecure' , function() {
+	it( 'Should have function checkCard ' , function( done ){
+		paylane.threedsecure.should.have.property( 'checkCard' )
+		done()
+	})
+
+	it( 'Should have function checkCardByToken ' , function( done ){
+		paylane.threedsecure.should.have.property( 'checkCardByToken' )
+		done()
+	})
+
+	it( 'Should have function authSale ' , function( done ){
+		paylane.threedsecure.should.have.property( 'authSale' )
+		done()
+	})
+
+})
 
 
