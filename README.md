@@ -13,7 +13,7 @@ Usage is very simple, set your username and password with setCredentials , then 
 For example:
 
 ```
-var paylane = require( 'node-paylane' )
+var paylane = require( 'paylane' )
 paylane.setCredentials( 'username' , 'password' )
 paylane.sofort.sale( parameters , function( err , return ){
  console.log( return )
