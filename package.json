@@ -1,5 +1,5 @@
 {
-  "name": "node-paylane",
+  "name": "paylane",
   "version": "1.0.5",
   "description": "Paylane REST client for node.js",
   "main": "paylane.js",

@@ -5,7 +5,7 @@ Implements all of http://devzone.paylane.com/function-reference/
 
 Installation
 ============
-```npm install node-paylane```
+```npm install paylane```
 
 Usage
 =====
